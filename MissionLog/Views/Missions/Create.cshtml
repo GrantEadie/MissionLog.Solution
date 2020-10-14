@@ -1,0 +1,37 @@
+@{
+  Layout = "_Layout";
+}
+
+@model MissionLog.Mission;
+
+<h4>Add a new mission</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.Label("Title")
+    <br>
+    @Html.TextBoxFor(model => model.ManifestTitle, new {@required="required"})
+    <br><br>
+    @Html.Label("Life Support Supplies")
+    <br>
+    @Html.TextBoxFor(model => model.ManifestLifeSupportSupply, new {@required="required"})
+    <br><br>
+    @Html.Label("Cargo")
+    <br>
+    @Html.TextBoxFor(model => model.ManifestShipCargo, new {@required="required"})
+    <br><br>
+    @Html.Label("Weapons")
+    <br>
+    @Html.TextBoxFor(model => model.ManifestWeapon, new {@required="required"})
+    
+    @* @Html.Label("Select Mission")
+    @Html.DropDownList("MissionId") *@
+    
+    @* @Html.Label("Select Ship")
+    @Html.DropDownList("ShipId") *@
+
+    <br><br>
+    <input type="submit" value="Add New Mission" class="btn btn-light btn-sm" />
+}
+<br>
+<p>@Html.ActionLink("Cancel", "Index", null, null, new {@class="btn btn-light btn-sm"})</p>

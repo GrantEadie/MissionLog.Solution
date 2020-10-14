@@ -83,7 +83,7 @@ namespace MissionLog.Controllers
     public ActionResult AddManifest(int id)
     {
       var thisShip = _db.Ships.FirstOrDefault(ships => ships.ShipId == id);
-      ViewBag.ManifestId = new SelectList(_db.Manifests, "ManifestId", "ManifestName");
+      ViewBag.ManifestId = new SelectList(_db.Manifests, "ManifestId", "ManifestTitle");
       return View(thisShip);
     }
     [HttpPost]
