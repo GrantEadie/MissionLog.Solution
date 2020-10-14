@@ -96,8 +96,6 @@ namespace MissionLog.Controllers
       _db.SaveChanges();
       return RedirectToAction("Details", new { id = mission.MissionId});
     }
-    
-
     [HttpPost]
     public ActionResult DeleteManifest(int joinId, int missionId)
     {
