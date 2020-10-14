@@ -1,16 +1,18 @@
-@using DoctorsOffice.Models;
+@using MissionLog.Models;
 @{
   Layout = "_Layout";
 }
-
-<h2>LIST OF SHIPS</h2>
+<div class="jumbotron">
+<h2>STARSHIPS</h2>
+<hr>
+</div>
 @if (@Model.Count == 0)
 {
-  <h3>NO SHIPS HAVE BEEN ADDED<h3>
+  <p>No starships have been added</p>
 }
 @foreach (Ship ship in Model)
 {
-  <li>@Html.ActionLink($"{ship.Name}", "Details", new { id = ship.ShipId }) </li>
+  <li>@Html.ActionLink($"{ship.ShipName}", "Details", new { id = ship.ShipId }) </li>
 }
 <br>
 <p>@Html.ActionLink("ADD NEW SHIP", "Create", null, null, new {@class="btn btn-light btn-sm"})</p>

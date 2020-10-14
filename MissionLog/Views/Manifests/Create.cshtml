@@ -1,0 +1,33 @@
+@{
+  Layout = "_Layout";
+}
+
+@model MissionLog.Models.Manifest;
+
+<h4>Add a new manifest</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.ManifestTitle)
+    @Html.TextBoxFor(model => model.ManifestTitle)
+
+    @Html.LabelFor(model => model.ManifestLifeSupportSupply)
+    @Html.TextBoxFor(model => model.ManifestLifeSupportSupply)
+
+    @Html.LabelFor(model => model.ManifestShipCargo)
+    @Html.TextBoxFor(model => model.ManifestShipCargo)
+
+    @Html.LabelFor(model => model.ManifestWeapon)
+    @Html.TextBoxFor(model => model.ManifestWeapon)
+
+    @* @Html.Label("Select Mission")
+    @Html.DropDownList("MissionId") *@
+
+    @* @Html.Label("Select Ship")
+    @Html.DropDownList("ShipId") *@
+
+    <br><br>
+    <input type="submit" value="Add new manifest" class="btn btn-light btn-sm" />
+}
+<br>
+<p>@Html.ActionLink("Show all Manifests", "Index", null, null, new {@class="btn btn-light btn-sm"})</p>

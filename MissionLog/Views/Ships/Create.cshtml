@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+@model MissionLog.Models.Ship;
+
+<div class="jumbotron">
+<h4>ADD A NEW SHIP</h4>
+<hr>
+</div>
+
+@using (Html.BeginForm())
+{
+  <p>Ship's Name: </p>
+  @Html.TextBoxFor(model => model.ShipName)
+
+  <input type="submit" value="Add Ship" class="btn btn-light btn-sm" />
+}
+<br>
+<p>@Html.ActionLink("Cancel", "Index", null, null, new {@class="btn btn-outline-light btn-sm"})</p>

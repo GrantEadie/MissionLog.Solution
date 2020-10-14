@@ -10,6 +10,7 @@ namespace MissionLog.Models
       this.Ships = new HashSet<ShipManifest>();
     }
     public int ManifestId { get; set; }
+    public string ManifestTitle { get; set; }
     public string ManifestLifeSupportSupply { get; set; }
     public string ManifestShipCargo { get; set; }
     public string ManifestWeapon { get; set; }

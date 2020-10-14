@@ -1,5 +1,13 @@
 body {
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: 'Sora', sans-serif;
+}
+
+hr {
+  background-color:white;
+}
+
+.jumbotron {
+  background:transparent !important
 }
 
 img {
