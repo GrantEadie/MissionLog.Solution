@@ -1,0 +1,18 @@
+@{
+  Layout = "_Layout";
+}
+@model MissionLog.Models.Manifest
+
+<h3>Add a ship to this manifest: @Html.DisplayFor(model => model.ManifestTitle)</h3>
+<br>
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.ManifestId)
+
+  @Html.Label("Select Ship")
+  @Html.DropDownList("ShipId")
+
+  <input type="submit" value="Save" class="btn btn-success btn-sm" />
+}
+<br>
+<p>@Html.ActionLink("Cancel", "Details", new { id = Model.ManifestId}, new {@class="btn btn-primary btn-sm"})</p>

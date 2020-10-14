@@ -2,23 +2,63 @@
   Layout = "_Layout";
 }
 @model MissionLog.Models.Ship;
+@using MissionLog.Models;
 
-<div class="jumbotron">
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+    <br>
+<br>
 <h4>ADD A NEW SHIP</h4>
 <hr>
-</div>
-
-@using (Html.BeginForm())
+      @using (Html.BeginForm())
 {
   <p>Ship Name: </p>
-  @Html.TextBoxFor(model => model.ShipName)
-  <p>Ship Species Origin: </p>
-  @Html.TextBoxFor(model => model.ShipSpecies)
-  <p>Ship Type</p>
-  @* @Html.DropDownListFor(m => m.ShipType, new SelectList(Enum.GetValues(typeof(ShipType))), 
-            "Select Ship Type") *@
+  @Html.TextBoxFor(model => model.ShipName, new {style="width:100%"})
+  <br><br>
 
-  <input type="submit" value="Add Ship" class="btn btn-light btn-sm" />
+  <p>Ship Species Origin: </p>
+  @Html.TextBoxFor(model => model.ShipSpecies, new {style="width:100%"})
+  <br><br>
+
+  <p>Ship Type: </p>
+  @Html.DropDownListFor(model => model.ShipType, new List<SelectListItem>
+{ 
+      new SelectListItem { Text = "Frigate", Value = "Frigate"},
+      new SelectListItem { Text = "Science Vessel", Value = "Science Vessel"},
+      new SelectListItem { Text = "Transport", Value = "Transport"},
+      new SelectListItem { Text = "Cargo", Value = "Cargo"},
+      new SelectListItem { Text = "Shuttle", Value = "Shuttle"},
+      new SelectListItem { Text = "Destroyer", Value = "Destroyer"},
+      new SelectListItem { Text = "Attack Fighter", Value = "Attack Fighter"}
+}, "", new{style="width:100%;"})
+  <br><br>
+
+  <p>Ship Class: </p>
+  @Html.DropDownListFor(model => model.ShipClass, new List<SelectListItem>
+  {
+    new SelectListItem { Text = "Galaxy", Value = "Galaxy"},
+    new SelectListItem { Text = "Miranda", Value = "Miranda"},
+    new SelectListItem { Text = "Constitution", Value = "Constitution"},
+    new SelectListItem { Text = "Defiant", Value = "Defiant"},
+    new SelectListItem { Text = "Excelsior", Value = "Exceltsior"},
+    new SelectListItem { Text = "Sovereign", Value = "Sovereign"}
+  }, "", new{style="width:100%;"})
+  <br><br>
+
+  <p>Ship Captain: </p>
+  @Html.TextBoxFor(model => model.ShipCaptain, new {style="width:100%"})
+  <br><hr><br>
+
+  <input type="submit" value="Add Ship" class="btn btn-light btn-sm btn-block" />
 }
 <br>
-<p>@Html.ActionLink("Cancel", "Index", null, null, new {@class="btn btn-outline-light btn-sm"})</p>
+<p>@Html.ActionLink("Cancel", "Index", null, null, new {@class="btn btn-outline-light btn-sm btn-block"})</p>
+    </div>
+    <div class="col-sm">
+    </div>
+    <div class="col-sm">
+    </div>
+  </div>
+</div>
+

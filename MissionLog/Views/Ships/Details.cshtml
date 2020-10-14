@@ -2,10 +2,9 @@
   Layout = "_Layout";
 }
 @model MissionLog.Models.Ship;
-<h1>Ship Details</h1>
-<br>
-
-<h3>@Html.DisplayNameFor(model => model.ShipName): @Html.DisplayFor(model => model.ShipName)</h3>
+<br><br>
+<h3>@Html.DisplayFor(model => model.ShipName)</h3>
+<hr>
 @if(Model.Missions.Count == 0)
 {
   <p>This ship does not have any missions.</p>
@@ -29,11 +28,11 @@ else
 <br>
 @if(Model.Manifests.Count == 0)
 {
-  <p>This doctor does not have any manifests currently assigned.</p>
+  <p>This ship does not have any manifests currently assigned.</p>
 }
 else
 {
-  <h4>Manifests currently under care:</h4>
+  <h4>Manifest:</h4>
   <ul>
   @foreach(var join in Model.Manifests)
   {
@@ -42,14 +41,27 @@ else
     {
       @Html.Hidden("shipId", @join.ShipId)
       @Html.Hidden("joinId", @join.ShipManifestId)
-      <input type="submit" value="Delete" class="btn btn-warning btn-xs" />
+      <input type="submit" value="Delete" class="btn btn-outline-warning btn-sm" />
     }
   }
   </ul>
 }
 <br>
-<p>@Html.ActionLink("Edit Ship", "Edit", null, new { id = Model.ShipId } , new {@class="btn btn-success btn-sm"})</p>
+
+  @* edit button *@
+
+  <a href="/Ships/Edit/@Model.ShipId" class="btn btn-outline-light btn-sm"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pen-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M13.498.795l.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
+  </svg></a> 
+  
+  @* delete button *@
+
+  <a href="/Vessels/Delete/@Model.ShipId" class="btn btn-outline-light btn-sm"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+  </svg></a>
+
+  
 <p>@Html.ActionLink("Add a Manifest", "AddManifest", "Ships", new { id = Model.ShipId } , new {@class="btn btn-success btn-sm"})</p>
 <p>@Html.ActionLink("Add a Mission", "AddMission", "Ships", new { id = Model.ShipId } , new {@class="btn btn-success btn-sm"})</p>
 <p>@Html.ActionLink("Delete Ship", "Delete", new { id = Model.ShipId }, new {@class="btn btn-danger btn-sm"})</p>
-<p>@Html.ActionLink("Back to Ships", "Index", null, null, new {@class="btn btn-primary btn-sm"})</p>
+<p>@Html.ActionLink("Back to Ships", "Index", null, null, new {@class="btn btn-light btn-sm"})</p>

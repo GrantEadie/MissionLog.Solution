@@ -1,0 +1,20 @@
+@{
+  Layout = "_Layout";
+}
+@model MissionLog.Models.Manifest
+
+<h2>Add a Mission</h2>
+
+<h4>Add a mission to this manifest: @Html.DisplayFor(model => model.ManifestTitle)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.ManifestId)
+
+  @Html.Label("Select Mission")
+  @Html.DropDownList("MissionId")
+
+  <input type="submit" value="Save" class="btn btn-success btn-sm" />
+}
+<br>
+<p>@Html.ActionLink("Manifest List", "Index", null, null, new {@class="btn btn-primary btn-sm"})</p>

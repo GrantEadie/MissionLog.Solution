@@ -1,0 +1,15 @@
+@{
+  Layout = "_Layout";
+}
+@model MissionLog.Models.Manifest
+
+<h3>Are you sure you want to delete this?</h3>
+
+@Html.DisplayNameFor(model => model.ManifestTitle): @Html.DisplayFor(model => model.ManifestTitle)
+@using (Html.BeginForm())
+{
+  <br>
+  <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
+}
+<br>
+<p>@Html.ActionLink("Cancel", "Details", null, new {id = Model.ManifestId}, new {@class="btn btn-light btn-sm"})</p>

@@ -8,21 +8,25 @@
 
 @using (Html.BeginForm())
 {
-    @Html.LabelFor(model => model.ManifestTitle)
-    @Html.TextBoxFor(model => model.ManifestTitle)
+    @Html.Label("Title")
     <br>
-    @Html.LabelFor(model => model.ManifestLifeSupportSupply)
-    @Html.TextBoxFor(model => model.ManifestLifeSupportSupply)
+    @Html.TextBoxFor(model => model.ManifestTitle, new {@required="required"})
+    <br><br>
+    @Html.Label("Life Support Supplies")
     <br>
-    @Html.LabelFor(model => model.ManifestShipCargo)
-    @Html.TextBoxFor(model => model.ManifestShipCargo)
+    @Html.TextBoxFor(model => model.ManifestLifeSupportSupply, new {@required="required"})
+    <br><br>
+    @Html.Label("Cargo")
     <br>
-    @Html.LabelFor(model => model.ManifestWeapon)
-    @Html.TextBoxFor(model => model.ManifestWeapon)
+    @Html.TextBoxFor(model => model.ManifestShipCargo, new {@required="required"})
+    <br><br>
+    @Html.Label("Weapons")
     <br>
+    @Html.TextBoxFor(model => model.ManifestWeapon, new {@required="required"})
+    
     @* @Html.Label("Select Mission")
     @Html.DropDownList("MissionId") *@
-    <br>
+    
     @* @Html.Label("Select Ship")
     @Html.DropDownList("ShipId") *@
 

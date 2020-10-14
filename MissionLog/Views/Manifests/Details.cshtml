@@ -5,8 +5,13 @@
 <h1>Manifest details</h1>
 <br>
 
-<h3>@Html.DisplayNameFor(model => model.ManifestTitle): @Html.DisplayFor(model => model.ManifestTitle)</h3>
+<h5><strong>@Html.DisplayName("Title"):</strong> @Html.DisplayFor(model => model.ManifestTitle)</h5>
+
+<h5><strong>@Html.DisplayName("Life Support Supplies"):</strong> @Html.DisplayFor(model => model.ManifestLifeSupportSupply)</h5>
+<h5><strong>@Html.DisplayName("Cargo"):</strong> @Html.DisplayFor(model => model.ManifestShipCargo)</h5>
+<h5><strong>@Html.DisplayName("Weapons"):</strong> @Html.DisplayFor(model => model.ManifestWeapon)</h5>
 @* <h3>@Html.DisplayNameFor(model => model.Mission): @Html.DisplayFor(model => model.Mission)</h3> *@
+<br>
 @if(Model.Missions.Count == 0)
 {
   <p>This manifest does not have any missions.</p>
@@ -50,7 +55,7 @@ else
 }
 <br>
 <p>@Html.ActionLink("Edit Manifest", "Edit", null, new { id = Model.ManifestId } , new {@class="btn btn-success btn-sm"})</p>
-<p>@Html.ActionLink("Add a Mission", "AddMission", "Manifests", new { id = Model.ManifestId } , new {@class="btn btn-success btn-sm"})</p>
+<p>@Html.ActionLink("Add a Ship", "AddShip", "Manifests", new { id = Model.ManifestId } , new {@class="btn btn-success btn-sm"})</p>
 <p>@Html.ActionLink("Add a Mission", "AddMission", "Manifests", new { id = Model.ManifestId } , new {@class="btn btn-success btn-sm"})</p>
 <p>@Html.ActionLink("Delete Manifest", "Delete", new { id = Model.ManifestId }, new {@class="btn btn-danger btn-sm"})</p>
 <p>@Html.ActionLink("Back to Manifests", "Index", null, null, new {@class="btn btn-primary btn-sm"})</p>

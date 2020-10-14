@@ -1,0 +1,32 @@
+@{
+  Layout = "_Layout";
+}
+@model MissionLog.Models.Manifest
+
+<h3>Edit this Manifest: @Html.DisplayFor(model => model.ManifestTitle)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.ManifestId)
+
+  @Html.Label("Title")
+  <br>
+  @Html.EditorFor(model => model.ManifestTitle)
+  <br><br>
+  @Html.Label("Life Support Supplies")
+  <br>
+  @Html.EditorFor(model => model.ManifestLifeSupportSupply)
+  <br><br>
+  @Html.Label("Cargo")
+  <br>
+  @Html.EditorFor(model => model.ManifestShipCargo)
+  <br><br>
+  @Html.Label("Weapons")
+  <br>
+  @Html.EditorFor(model => model.ManifestWeapon)
+
+
+  <input type="submit" value="Save" class="btn btn-success btn-sm" />
+}
+<br>
+<p>@Html.ActionLink("Cancel", "Details", null, new {id = Model.ManifestId}, new {@class="btn btn-light btn-sm"})</p>
