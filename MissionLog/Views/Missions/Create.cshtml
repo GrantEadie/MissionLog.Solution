@@ -2,27 +2,20 @@
   Layout = "_Layout";
 }
 
-@model MissionLog.Mission;
+@model MissionLog.Models.Mission;
 
 <h4>Add a new mission</h4>
 
 @using (Html.BeginForm())
 {
-    @Html.Label("Title")
+    @Html.Label("Mission Name")
     <br>
-    @Html.TextBoxFor(model => model.ManifestTitle, new {@required="required"})
+    @Html.TextBoxFor(model => model.MissionName, new {@required="required"})
     <br><br>
-    @Html.Label("Life Support Supplies")
+    @Html.Label("Description")
     <br>
-    @Html.TextBoxFor(model => model.ManifestLifeSupportSupply, new {@required="required"})
+    @Html.TextBoxFor(model => model.MissionDescription, new {@required="required"})
     <br><br>
-    @Html.Label("Cargo")
-    <br>
-    @Html.TextBoxFor(model => model.ManifestShipCargo, new {@required="required"})
-    <br><br>
-    @Html.Label("Weapons")
-    <br>
-    @Html.TextBoxFor(model => model.ManifestWeapon, new {@required="required"})
     
     @* @Html.Label("Select Mission")
     @Html.DropDownList("MissionId") *@

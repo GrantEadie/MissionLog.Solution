@@ -3,20 +3,33 @@
 }
 
 @model MissionLog.Models.Ship
-<br><br>
+  <div class="row">
+    <div class="col-sm">
+      <br><br>
 <h2>Add a manifest </h2>
 <hr>  
 
-<h4>Add a manifest to this manifest: @Html.DisplayFor(model => model.ShipName)</h4>
+<h4>@Html.DisplayFor(model => model.ShipName)</h4>
+<br>
 
 @using (Html.BeginForm())
 {
   @Html.HiddenFor(model => model.ShipId)
 
-  @Html.Label("Select Manifest")
-  @Html.DropDownList("ManifestId")
+  @Html.Label("Select Manifest")<br>
 
-  <input type="submit" value="Save" class="btn btn-success btn-sm" />
+  @Html.DropDownList("ManifestId", null, new {@class="form-control"})<br>
+
+  <input type="submit" value="Save" class="btn btn-outline-success btn-block btn-sm"/>
 }
 <br>
-<p>@Html.ActionLink("Ship List", "Index", null, null, new {@class="btn btn-light btn-sm"})</p>
+<p>@Html.ActionLink("back", "Index", null, null, new {@class="btn btn-light btn-sm"})</p>
+
+    </div>
+    <div class="col-sm">
+      
+    </div>
+    <div class="col-sm">
+
+    </div>
+  </div>
