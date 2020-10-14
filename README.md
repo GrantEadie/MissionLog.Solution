@@ -1,6 +1,6 @@
-# _Application Name_
+# _Mission Log_
 
-#### _{Brief descrition on what application does}, {Date}_
+#### _This is a database website to log missions of exploration. It will include ships and manifest, 10/14/2020_
 
 #### By _Jeff Dinsmore & Grant Eadie_
 
