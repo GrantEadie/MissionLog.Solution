@@ -1,0 +1,56 @@
+@{
+  Layout = "_Layout";
+}
+@model MissionLog.Models.Manifest;
+<h1>Manifest details</h1>
+<br>
+
+<h3>@Html.DisplayNameFor(model => model.ManifestTitle): @Html.DisplayFor(model => model.ManifestTitle)</h3>
+@* <h3>@Html.DisplayNameFor(model => model.Mission): @Html.DisplayFor(model => model.Mission)</h3> *@
+@if(Model.Missions.Count == 0)
+{
+  <p>This manifest does not have any missions.</p>
+}
+else
+{
+  <h4>Missions:</h4>
+  <ul>
+  @foreach(var join in Model.Missions)
+  {
+    <li>@Html.ActionLink($"{join.Mission.MissionName}", "Details", "Missions", new { id = join.Mission.MissionId })</li>
+    @using (Html.BeginForm("DeleteMission", "Manifests"))
+    {
+      @Html.Hidden("manifestId", @join.ManifestId)
+      @Html.Hidden("joinId", @join.MissionManifestId)
+      <input type="submit" value="Delete" class="btn btn-warning btn-xs" />
+    }
+  }
+  </ul>
+}
+<br>
+@if(Model.Missions.Count == 0)
+{
+  <p>This manifest does not have any missions currently assigned.</p>
+}
+else
+{
+  <h4>Missions currently under care:</h4>
+  <ul>
+  @foreach(var join in Model.Missions)
+  {
+    <li>@Html.ActionLink($"{join.Mission.MissionName}", "Details", "Missions", new { id = join.Mission.MissionId })</li>
+    @using (Html.BeginForm("DeleteMission", "Manifests"))
+    {
+      @Html.Hidden("manifestId", @join.ManifestId)
+      @Html.Hidden("joinId", @join.MissionManifestId)
+      <input type="submit" value="Delete" class="btn btn-warning btn-xs" />
+    }
+  }
+  </ul>
+}
+<br>
+<p>@Html.ActionLink("Edit Manifest", "Edit", null, new { id = Model.ManifestId } , new {@class="btn btn-success btn-sm"})</p>
+<p>@Html.ActionLink("Add a Mission", "AddMission", "Manifests", new { id = Model.ManifestId } , new {@class="btn btn-success btn-sm"})</p>
+<p>@Html.ActionLink("Add a Mission", "AddMission", "Manifests", new { id = Model.ManifestId } , new {@class="btn btn-success btn-sm"})</p>
+<p>@Html.ActionLink("Delete Manifest", "Delete", new { id = Model.ManifestId }, new {@class="btn btn-danger btn-sm"})</p>
+<p>@Html.ActionLink("Back to Manifests", "Index", null, null, new {@class="btn btn-primary btn-sm"})</p>

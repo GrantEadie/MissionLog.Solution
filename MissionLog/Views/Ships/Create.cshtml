@@ -10,8 +10,13 @@
 
 @using (Html.BeginForm())
 {
-  <p>Ship's Name: </p>
+  <p>Ship Name: </p>
   @Html.TextBoxFor(model => model.ShipName)
+  <p>Ship Species Origin: </p>
+  @Html.TextBoxFor(model => model.ShipSpecies)
+  <p>Ship Type</p>
+  @* @Html.DropDownListFor(m => m.ShipType, new SelectList(Enum.GetValues(typeof(ShipType))), 
+            "Select Ship Type") *@
 
   <input type="submit" value="Add Ship" class="btn btn-light btn-sm" />
 }

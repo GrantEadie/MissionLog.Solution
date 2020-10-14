@@ -1,0 +1,55 @@
+@{
+  Layout = "_Layout";
+}
+@model MissionLog.Models.Ship;
+<h1>Ship Details</h1>
+<br>
+
+<h3>@Html.DisplayNameFor(model => model.ShipName): @Html.DisplayFor(model => model.ShipName)</h3>
+@if(Model.Missions.Count == 0)
+{
+  <p>This ship does not have any missions.</p>
+}
+else
+{
+  <h4>Missions: </h4>
+  <ul>
+  @foreach(var join in Model.Missions)
+  {
+    <li>@Html.ActionLink($"{join.Mission.MissionName}", "Details", "Missions", new { id = join.Mission.MissionId })</li>
+    @using (Html.BeginForm("DeleteMission", "Ships"))
+    {
+      @Html.Hidden("shipId", @join.ShipId)
+      @Html.Hidden("joinId", @join.ShipMissionId)
+      <input type="submit" value="Delete" class="btn btn-outline-light btn-xs" />
+    }
+  }
+  </ul>
+}
+<br>
+@if(Model.Manifests.Count == 0)
+{
+  <p>This doctor does not have any manifests currently assigned.</p>
+}
+else
+{
+  <h4>Manifests currently under care:</h4>
+  <ul>
+  @foreach(var join in Model.Manifests)
+  {
+    <li>@Html.ActionLink($"{join.Manifest.ManifestTitle}", "Details", "Manifests", new { id = join.Manifest.ManifestId })</li>
+    @using (Html.BeginForm("DeleteManifest", "Doctors"))
+    {
+      @Html.Hidden("shipId", @join.ShipId)
+      @Html.Hidden("joinId", @join.ShipManifestId)
+      <input type="submit" value="Delete" class="btn btn-warning btn-xs" />
+    }
+  }
+  </ul>
+}
+<br>
+<p>@Html.ActionLink("Edit Ship", "Edit", null, new { id = Model.ShipId } , new {@class="btn btn-success btn-sm"})</p>
+<p>@Html.ActionLink("Add a Manifest", "AddManifest", "Ships", new { id = Model.ShipId } , new {@class="btn btn-success btn-sm"})</p>
+<p>@Html.ActionLink("Add a Mission", "AddMission", "Ships", new { id = Model.ShipId } , new {@class="btn btn-success btn-sm"})</p>
+<p>@Html.ActionLink("Delete Ship", "Delete", new { id = Model.ShipId }, new {@class="btn btn-danger btn-sm"})</p>
+<p>@Html.ActionLink("Back to Ships", "Index", null, null, new {@class="btn btn-primary btn-sm"})</p>

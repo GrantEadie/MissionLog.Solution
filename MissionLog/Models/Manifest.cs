@@ -6,7 +6,7 @@ namespace MissionLog.Models
   {
     public Manifest()
     {
-      this.Missions = new HashSet<MissionManifest>();
+      this.Missions = new HashSet<MissionManifest>() ;
       this.Ships = new HashSet<ShipManifest>();
     }
     public int ManifestId { get; set; }
