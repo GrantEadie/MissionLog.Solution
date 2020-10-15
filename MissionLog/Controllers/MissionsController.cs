@@ -107,7 +107,7 @@ namespace MissionLog.Controllers
     public ActionResult AddManifest(int id)
     {
       var thisMission = _db.Missions.FirstOrDefault(missions => missions.MissionId == id);
-      ViewBag.ManifestId = new SelectList(_db.Manifests, "ManifestId", "ManifestName");
+      ViewBag.ManifestId = new SelectList(_db.Manifests, "ManifestId", "ManifestTitle");
       return View(thisMission);
     }
     [HttpPost]

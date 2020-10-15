@@ -27,7 +27,7 @@
 }
 @foreach (Ship ship in Model)
 {
-  <li>@Html.ActionLink($"{ship.ShipName}", "Details", new { id = ship.ShipId }) </li>
+  <li>@Html.ActionLink($"{ship.ShipName}", "Details", new { id = ship.ShipId }, new { @class="list-detail"}) </li>
 }
 <br>
 <p>@Html.ActionLink("ADD NEW SHIP", "Create", null, null, new {@class="btn btn-light btn-sm"})</p>

@@ -1,0 +1,58 @@
+@{
+  Layout = "_Layout";
+}
+@model MissionLog.Models.Mission;
+<h1>Mission details</h1>
+<br>
+
+<h5><strong>@Html.DisplayName("Name"):</strong> @Html.DisplayFor(model => model.MissionName)</h5>
+
+<h5><strong>@Html.DisplayName("Description"):</strong> @Html.DisplayFor(model => model.MissionDescription)</h5>
+<br>
+@if(Model.Manifests.Count == 0)
+{
+  <p>This mission does not have a manifest.</p>
+}
+else
+{
+  <h4>Manifests:</h4>
+  <ul>
+  @foreach(var join in Model.Manifests)
+  {
+    <li>@Html.ActionLink($"{join.Manifest.ManifestTitle}", "Details", "Manifests", new { id = join.Manifest.ManifestId })</li>
+    @using (Html.BeginForm("DeleteManifest", "Missions"))
+    {
+      @Html.Hidden("manifestId", @join.MissionId)
+      @Html.Hidden("joinId", @join.MissionManifestId)
+      <input type="submit" value="Delete" class="btn btn-outline-warning btn-xs" />
+    }
+  }
+  </ul>
+}
+<br>
+@if(Model.Ships.Count == 0)
+{
+  <p>This mission does not have any ships currently assigned.</p>
+}
+else
+{
+  <h5>Ships for this mission:</h5>
+  <ul>
+  @foreach(var join in Model.Ships)
+  {
+    <li>@Html.ActionLink($"{join.Ship.ShipName}", "Details", "Ships", new { id = join.Ship.ShipId })</li>
+    @using (Html.BeginForm("DeleteShip", "Missions"))
+    {
+      @Html.Hidden("missionId", @join.MissionId)
+      @Html.Hidden("joinId", @join.ShipMissionId)
+      <input type="submit" value="Delete" class="btn btn-outline-warning btn-xs" />
+    }
+  }
+  </ul>
+}
+<br>
+<p>@Html.ActionLink("Edit Mission", "Edit", null, new { id = Model.MissionId } , new {@class="btn btn-outline-success btn-sm"})</p>
+<p>@Html.ActionLink("Add a Ship", "AddShip", "Missions", new { id = Model.MissionId } , new {@class="btn btn-outline-success btn-sm"})</p>
+<p>@Html.ActionLink("Add a Manifest", "AddManifest", "Missions", new { id = Model.MissionId } , new {@class="btn btn-outline-success btn-sm"})</p>
+<p>@Html.ActionLink("Delete Mission", "Delete", new { id = Model.MissionId }, new {@class="btn btn-outline-danger btn-sm"})</p>
+<p>@Html.ActionLink("Back to Missions", "Index", null, null, new {@class="btn btn-outline-primary btn-sm"})</p>

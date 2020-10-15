@@ -3,35 +3,44 @@
 }
 
 @model MissionLog.Models.Manifest;
+<br><br>
+<h4>Add a new manifest</h4><hr> 
+<div class="row">
+  <div class="col-sm">
 
-<h4>Add a new manifest</h4>
+    @using (Html.BeginForm())
+    {
+        @Html.Label("Title")
+        <br>
+        @Html.TextBoxFor(model => model.ManifestTitle, new {@required="required"})
+        <br><br>
+        @Html.Label("Life Support Supplies")
+        <br>
+        @Html.TextBoxFor(model => model.ManifestLifeSupportSupply, new {@required="required"})
+        <br><br>
+        @Html.Label("Cargo")
+        <br>
+        @Html.TextBoxFor(model => model.ManifestShipCargo, new {@required="required"})
+        <br><br>
+        @Html.Label("Weapons")
+        <br>
+        @Html.TextBoxFor(model => model.ManifestWeapon, new {@required="required"})
+        
+        @* @Html.Label("Select Mission")
+        @Html.DropDownList("MissionId") *@
+        
+        @* @Html.Label("Select Ship")
+        @Html.DropDownList("ShipId") *@
 
-@using (Html.BeginForm())
-{
-    @Html.Label("Title")
+        <br><br>
+        <input type="submit" value="Add New Manifest" class="btn btn-light btn-block btn-sm" />
+    }
     <br>
-    @Html.TextBoxFor(model => model.ManifestTitle, new {@required="required"})
-    <br><br>
-    @Html.Label("Life Support Supplies")
-    <br>
-    @Html.TextBoxFor(model => model.ManifestLifeSupportSupply, new {@required="required"})
-    <br><br>
-    @Html.Label("Cargo")
-    <br>
-    @Html.TextBoxFor(model => model.ManifestShipCargo, new {@required="required"})
-    <br><br>
-    @Html.Label("Weapons")
-    <br>
-    @Html.TextBoxFor(model => model.ManifestWeapon, new {@required="required"})
-    
-    @* @Html.Label("Select Mission")
-    @Html.DropDownList("MissionId") *@
-    
-    @* @Html.Label("Select Ship")
-    @Html.DropDownList("ShipId") *@
+    <p>@Html.ActionLink("Cancel", "Index", null, null, new {@class="btn btn-outline-warning btn-block btn-sm"})</p>
+  </div>
+  <div class="col-sm">
 
-    <br><br>
-    <input type="submit" value="Add New Manifest" class="btn btn-light btn-sm" />
-}
-<br>
-<p>@Html.ActionLink("Cancel", "Index", null, null, new {@class="btn btn-light btn-sm"})</p>
+    </div>
+    <div class="col-sm">
+    </div>
+</div>

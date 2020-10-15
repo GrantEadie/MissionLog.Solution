@@ -2,15 +2,17 @@
   Layout = "_Layout";
 }
 @model MissionLog.Models.Manifest;
-<h1>Manifest details</h1>
-<br>
-
-<h5><strong></strong>@Html.DisplayName("Title"):</strong> @Html.DisplayFor(model => model.ManifestTitle)</h5>
-
-<h5><strong>@Html.DisplayName("Life Support Supplies"):</strong> @Html.DisplayFor(model => model.ManifestLifeSupportSupply)</h5>
-<h5><strong>@Html.DisplayName("Cargo"):</strong> @Html.DisplayFor(model => model.ManifestShipCargo)</h5>
-<h5><strong>@Html.DisplayName("Weapons"):</strong> @Html.DisplayFor(model => model.ManifestWeapon)</h5>
-@* <h3>@Html.DisplayNameFor(model => model.Mission): @Html.DisplayFor(model => model.Mission)</h3> *@
+<br><br>
+<h1>Manifest details</h1><hr>
+  <div class="row">
+    <div class="col-sm">
+      <h2> @Html.DisplayFor(model => model.ManifestTitle)</h2><br>
+<p>Life Support: </p>
+<h5>@Html.DisplayFor(model => model.ManifestLifeSupportSupply)</h5><br>
+<p>Cargo: </p>
+<h5>@Html.DisplayFor(model => model.ManifestShipCargo)</h5><br>
+<p>Weapons: </p>
+<h5>@Html.DisplayFor(model => model.ManifestWeapon)</h5><hr>
 <br>
 @if(Model.Missions.Count == 0)
 {
@@ -22,7 +24,7 @@ else
   <ul>
   @foreach(var join in Model.Missions)
   {
-    <li>@Html.ActionLink($"{join.Mission.MissionName}", "Details", "Ships", new { id = join.Mission.MissionId })</li>
+    <li>@Html.ActionLink($"{join.Mission.MissionName}", "Details", "Missions", new { id = join.Mission.MissionId})</li>
     @using (Html.BeginForm("DeleteShip", "Manifests"))
     {
       @Html.Hidden("manifestId", @join.ManifestId)
@@ -54,8 +56,15 @@ else
   </ul>
 }
 <br>
-<p>@Html.ActionLink("Edit Manifest", "Edit", null, new { id = Model.ManifestId } , new {@class="btn btn-outline-success btn-sm"})</p>
-<p>@Html.ActionLink("Add a Ship", "AddShip", "Manifests", new { id = Model.ManifestId } , new {@class="btn btn-outline-success btn-sm"})</p>
-<p>@Html.ActionLink("Add a Mission", "AddMission", "Manifests", new { id = Model.ManifestId } , new {@class="btn btn-outline-success btn-sm"})</p>
-<p>@Html.ActionLink("Delete Manifest", "Delete", new { id = Model.ManifestId }, new {@class="btn btn-outline-danger btn-sm"})</p>
-<p>@Html.ActionLink("Back to Manifests", "Index", null, null, new {@class="btn btn-outline-primary btn-sm"})</p>
+<p>@Html.ActionLink("Edit Manifest", "Edit", null, new { id = Model.ManifestId } , new {@class="btn btn-block btn-outline-success btn-sm"})</p>
+<p>@Html.ActionLink("Add a Ship", "AddShip", "Manifests", new { id = Model.ManifestId } , new {@class="btn btn-block btn-outline-success btn-sm"})</p>
+<p>@Html.ActionLink("Add a Mission", "AddMission", "Manifests", new { id = Model.ManifestId } , new {@class="btn btn-block btn-outline-success btn-sm"})</p>
+<p>@Html.ActionLink("Delete Manifest", "Delete", new { id = Model.ManifestId }, new {@class="btn btn-block btn-outline-danger btn-sm"})</p>
+<p>@Html.ActionLink("Back to Manifests", "Index", null, null, new {@class="btn btn-block btn-outline-primary btn-sm"})</p>
+
+</div>
+<div class="col-sm">
+</div>
+<div class="col-sm">
+</div>
+</div>
